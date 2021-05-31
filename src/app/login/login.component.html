@@ -1,0 +1,12 @@
+<div class="login-container">
+  <h3 class="login-title" *ngIf="selectedTabIndex==0">Recruiter Login</h3>
+  <h3 class="login-title" *ngIf="selectedTabIndex==1">Employee Login</h3>
+  <mat-tab-group [selectedIndex]="selectedTabIndex" (selectedTabChange)="tabChanged($event)">
+    <mat-tab label="Recruiter">
+      <app-recruiter-login></app-recruiter-login>
+    </mat-tab>
+    <mat-tab label="Employee">
+      <app-employee-login></app-employee-login>
+    </mat-tab>
+  </mat-tab-group>
+</div>

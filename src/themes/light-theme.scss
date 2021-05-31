@@ -1,0 +1,5 @@
+$app-light-primary: mat-palette($mat-cyan);
+$app-light-accent: mat-palette($mat-teal);
+$app-light-warn: mat-palette($mat-red);
+
+$app-light-theme: mat-light-theme($app-light-primary, $app-light-accent, $app-light-warn);

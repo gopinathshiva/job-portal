@@ -1,0 +1,21 @@
+@import "~@angular/material/theming";
+
+@mixin app-employee-login-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .container {
+    background: mat-color($primary, lighter);
+  }
+
+  input[type=submit] {
+    background-color: mat-color($accent, default);
+  }
+
+  input[type=submit]:hover {
+    background-color: mat-color($accent, darker);
+  }
+}

@@ -1,0 +1,8 @@
+<div [class.light-theme]="!hasDarkTheme" [class.dark-theme]="hasDarkTheme" class="mat-app-background" [style.height]="'100vh'">
+  <app-header (handleThemeChange)="onThemeChange()"></app-header>
+  <div class="content" role="main">
+    <app-loader *ngIf="isLoading"></app-loader>
+    <router-outlet></router-outlet>
+  </div>
+  <router-outlet></router-outlet>
+</div>

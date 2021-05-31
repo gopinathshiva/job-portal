@@ -1,0 +1,12 @@
+<div class="register-container">
+  <h3 class="title" *ngIf="selectedTabIndex==0">Recruiter Register</h3>
+  <h3 class="title" *ngIf="selectedTabIndex==1">Employee Register</h3>
+  <mat-tab-group [selectedIndex]="selectedTabIndex" (selectedTabChange)="tabChanged($event)">
+    <mat-tab label="Recruiter">
+      <app-recruiter-register></app-recruiter-register>
+    </mat-tab>
+    <mat-tab label="Employee">
+      <app-employee-register></app-employee-register>
+    </mat-tab>
+  </mat-tab-group>
+</div>

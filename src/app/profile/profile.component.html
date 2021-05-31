@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="title">
+    <span>User Profile</span>
+  </div>
+  <div class="details" *ngIf="userInfo">
+    <div class="row">
+      <div class="label">
+        User Email :
+      </div>
+      <div class="datas">
+        {{userInfo.email}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="label">
+        Skills :
+      </div>
+      <div class="datas">
+        {{userInfo.skills}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="label">
+        Github Username :
+      </div>
+      <div class="datas">
+        {{userInfo.githubUsername}}
+      </div>
+    </div>
+    <button mat-raised-button color="accent" (click)="loadGithub()">Load Github Repos</button>
+    <div *ngIf="repos.length">
+      <ul>
+        <li *ngFor="let repo of repos"><a [href]="repo.html_url">{{repo.name}}</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
