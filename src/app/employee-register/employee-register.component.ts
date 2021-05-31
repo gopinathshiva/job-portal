@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {EmployeeService} from '../employee.service';
-import {LoaderService} from '../loader.service';
+import {delayExecution, errorHandler} from '../app.utils';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-employee-register',
   templateUrl: './employee-register.component.html',
-  styleUrls: ['./employee-register.component.scss']
+  styleUrls: ['../form.scss']
 })
 export class EmployeeRegisterComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private loaderService: LoaderService) { }
+  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private router: Router) { }
 
   get email(): AbstractControl | null { return this.employeeRegisterForm.get('email'); }
   get password(): AbstractControl | null { return this.employeeRegisterForm.get('password'); }
@@ -31,11 +32,13 @@ export class EmployeeRegisterComponent implements OnInit {
 
   async onSubmit(): Promise<void> {
     this.submitted = true;
-    this.loaderService.setLoading(true);
-    this.employeeService.register(JSON.stringify(this.employeeRegisterForm.value)).toPromise().catch(e => {
-      console.log(e);
-    });
-    this.loaderService.setLoading(false);
+    if (!this.employeeRegisterForm.valid) { return; }
+    const response = this.employeeService.register(JSON.stringify(this.employeeRegisterForm.value)).toPromise().catch(errorHandler);
+    if (response) {
+      delayExecution(async () => {
+        await this.router.navigate(['/login']);
+      });
+    }
   }
 
 }

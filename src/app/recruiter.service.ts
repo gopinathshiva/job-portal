@@ -26,6 +26,13 @@ export class RecruiterService {
     );
   }
 
+  postJob(body: string): Observable<any> {
+    return this.httpClient.post(`${AppConstants.BASE_URL}${AppConstants.JOBS_URL}`, body, {
+        headers: new HttpHeaders().append('Content-Type', 'application/json')
+      }
+    );
+  }
+
   postedJobs(): Observable<any> {
     const mailId = this.recruiterInfo();
     return this.httpClient.get(`${AppConstants.BASE_URL}${AppConstants.JOBS_URL}${AppConstants.POSTED_BY_URL}${mailId}`, {

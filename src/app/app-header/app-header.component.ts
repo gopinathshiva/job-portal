@@ -30,6 +30,8 @@ export class AppHeaderComponent {
 
   async onLogout(): Promise<void> {
     localStorage.removeItem('user');
+    localStorage.removeItem('isAdmin');
+    localStorage.removeItem('isEmployee');
     await this.router.navigate(['/login']);
   }
 

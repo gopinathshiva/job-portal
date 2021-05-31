@@ -53,7 +53,7 @@ exports.validateJob = () => {
 exports.hasValidationErrors = function (req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(422).json({error: errors.array()});
+    return res.status(422).json({message: 'Invalid form', error: errors.array()});
   } else {
     return false;
   }

@@ -1,21 +1,21 @@
 <div class="container">
   <form [formGroup]="employeeRegisterForm" (ngSubmit)="onSubmit()">
     <label for="email">Email *</label>
-    <input [class.error] = "(email?.invalid && (email?.dirty || email?.touched) && submitted)" type="text" id="email" formControlName="email" placeholder="Enter email..">
-    <div class="error" *ngIf="email?.invalid && (email?.dirty || email?.touched) && submitted">Email is required</div>
+    <input [class.error] = "(email?.invalid && (email?.dirty || email?.touched) || submitted)" type="text" id="email" formControlName="email" placeholder="Enter email..">
+    <div class="error" *ngIf="email?.invalid && (email?.dirty || email?.touched) || submitted">Email is required</div>
 
     <label for="password">Password *</label>
-    <input [class.error] = "password?.invalid && (password?.dirty || password?.touched) && submitted" type="password" id="password" formControlName="password" placeholder="Enter password..">
-    <div class="error" *ngIf="password?.invalid && (password?.dirty || password?.touched) && submitted">Password is required</div>
+    <input [class.error] = "password?.invalid && (password?.dirty || password?.touched) || submitted" type="password" id="password" formControlName="password" placeholder="Enter password..">
+    <div class="error" *ngIf="password?.invalid && (password?.dirty || password?.touched) || submitted">Password is required</div>
 
     <label for="email">Github username *</label>
-    <input [class.error] = "(githubUsername?.invalid && (githubUsername?.dirty || githubUsername?.touched) && submitted)" type="text" id="githubUsername" formControlName="githubUsername" placeholder="Enter username..">
-    <div class="error" *ngIf="githubUsername?.invalid && (githubUsername?.dirty || githubUsername?.touched) && submitted">github username is required</div>
+    <input [class.error] = "(githubUsername?.invalid && (githubUsername?.dirty || githubUsername?.touched) || submitted)" type="text" id="githubUsername" formControlName="githubUsername" placeholder="Enter username..">
+    <div class="error" *ngIf="githubUsername?.invalid && (githubUsername?.dirty || githubUsername?.touched) || submitted">github username is required</div>
 
     <label for="skills">Skills *</label>
-    <input [class.error] = "skills?.invalid && (skills?.dirty || skills?.touched) && submitted" type="text" id="skills" formControlName="skills" placeholder="Enter skills..">
-    <div class="error" *ngIf="skills?.invalid && (skills?.dirty || skills?.touched) && submitted">skills is required</div>
+    <input [class.error] = "skills?.invalid && (skills?.dirty || skills?.touched) || submitted" type="text" id="skills" formControlName="skills" placeholder="Enter skills..">
+    <div class="error" *ngIf="skills?.invalid && (skills?.dirty || skills?.touched) || submitted">skills is required</div>
 
-    <input type="submit" value="Submit" [disabled]="employeeRegisterForm.invalid">
+    <input type="submit" value="Submit">
   </form>
 </div>

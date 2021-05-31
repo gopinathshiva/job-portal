@@ -16,7 +16,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { EmployeeLoginComponent } from './employee-login/employee-login.component';
 import { RecruiterLoginComponent } from './recruiter-login/recruiter-login.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 import { RecruiterDashboardComponent } from './recruiter-dashboard/recruiter-dashboard.component';
 import { JobsComponent } from './jobs/jobs.component';
@@ -33,6 +33,11 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatInputModule} from '@angular/material/input';
+import {RequestInterceptor} from './request.interceptor';
+import {ResponseInterceptor} from './response.interceptor';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {FloatingButtonComponent} from './floating-button/floating-button.component';
+import { NewJobComponent } from './new-job/new-job.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +47,7 @@ import {MatInputModule} from '@angular/material/input';
     LoginComponent,
     RegisterComponent,
     EmployeeLoginComponent,
+    FloatingButtonComponent,
     RecruiterLoginComponent,
     EmployeeDashboardComponent,
     RecruiterDashboardComponent,
@@ -52,6 +58,7 @@ import {MatInputModule} from '@angular/material/input';
     EmployeeRegisterComponent,
     RecruiterRegisterComponent,
     TableComponent,
+    NewJobComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -67,12 +74,16 @@ import {MatInputModule} from '@angular/material/input';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatSnackBarModule,
     MatSortModule,
     MatTableModule,
     MatPaginatorModule,
     MatTooltipModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

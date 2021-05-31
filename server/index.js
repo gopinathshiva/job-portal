@@ -46,6 +46,7 @@ app.use((error, req, res, next) => {
     return res.status(301).redirect('/not-found');
   }
   console.log(error.statusCode);
+  console.log(error.toString());
   return res
     .status(500)
     .json({ error: error.toString() });

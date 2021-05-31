@@ -24,8 +24,12 @@ export class PostedJobsComponent implements OnInit {
     }
   }
 
-  onActionClick(user): void {
-    this.router.navigate([`/profile/${user}`]);
+  async onActionClick(user): Promise<void> {
+    await this.router.navigate([`/profile/${user}`]);
+  }
+
+  async addJob(): Promise<void> {
+    await this.router.navigate(['/new-job']);
   }
 
 }

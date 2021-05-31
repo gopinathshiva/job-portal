@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {RecruiterService} from '../recruiter.service';
-import {LoaderService} from '../loader.service';
+import {delayExecution, errorHandler} from '../app.utils';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-recruiter-register',
@@ -10,7 +11,7 @@ import {LoaderService} from '../loader.service';
 })
 export class RecruiterRegisterComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private recruiterService: RecruiterService, private loaderService: LoaderService) { }
+  constructor(private fb: FormBuilder, private recruiterService: RecruiterService, private router: Router) { }
 
   get email(): AbstractControl | null { return this.recruiterRegisterForm.get('email'); }
   get password(): AbstractControl | null { return this.recruiterRegisterForm.get('password'); }
@@ -27,13 +28,12 @@ export class RecruiterRegisterComponent implements OnInit {
 
   async onSubmit(): Promise<void> {
     this.submitted = true;
-    this.loaderService.setLoading(true);
-    const response = this.recruiterService.register(this.recruiterRegisterForm.value).toPromise().catch(e => {
-      console.log(e);
-    });
-    this.loaderService.setLoading(false);
+    if (!this.recruiterRegisterForm.valid) { return; }
+    const response = this.recruiterService.register(this.recruiterRegisterForm.value).toPromise().catch(errorHandler);
     if (response) {
-      // TodO navigate
+      delayExecution(async () => {
+        await this.router.navigate(['/login']);
+      });
     }
   }
 
