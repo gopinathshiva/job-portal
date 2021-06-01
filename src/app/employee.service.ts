@@ -20,7 +20,7 @@ export class EmployeeService {
   }
 
   register(body: string): Observable<any> {
-    return this.httpClient.post(`${AppConstants.BASE_URL}${AppConstants.EMPLOYEE_URL}${AppConstants.LOGIN_URL}`, body, {
+    return this.httpClient.post(`${AppConstants.BASE_URL}${AppConstants.EMPLOYEE_URL}${AppConstants.REGISTER_URL}`, body, {
         headers: new HttpHeaders().append('Content-Type', 'application/json')
       }
     );

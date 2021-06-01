@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatTabChangeEvent} from '@angular/material/tabs';
 
 @Component({
   selector: 'app-employee-dashboard',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeDashboardComponent implements OnInit {
 
+  selectedTabIndex = 0;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  tabChanged(tabChangeEvent: MatTabChangeEvent): void {
+    this.selectedTabIndex = tabChangeEvent.index;
   }
 
 }

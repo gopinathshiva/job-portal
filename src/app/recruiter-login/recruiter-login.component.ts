@@ -29,8 +29,9 @@ export class RecruiterLoginComponent {
     if (!this.loginForm.valid) { return; }
     const response = await this.recruiterService.login(JSON.stringify(this.loginForm.value)).toPromise().catch(errorHandler);
     if (response) {
+      this.loginForm.reset();
       localStorage.setItem('user', JSON.stringify(response.user));
-      localStorage.setItem('isAdmin', 'true');
+      localStorage.setItem('isRecruiter', 'true');
       delayExecution(async () => {
         await this.router.navigate(['/recruiter-dashboard']);
       });

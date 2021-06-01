@@ -13,9 +13,10 @@ export class AppliedJobsComponent implements OnInit {
   jobs: any = [];
 
   async ngOnInit(): Promise<void> {
+    console.log('init');
     const response = await this.employeeService.appliedJobs().toPromise().catch(e => {
       console.log(e);
-    })
+    });
 
     if (response) {
       this.jobs = response.jobs;

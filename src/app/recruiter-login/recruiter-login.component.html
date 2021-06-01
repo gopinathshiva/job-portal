@@ -1,12 +1,12 @@
 <div class="container">
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <label for="email">Email *</label>
-    <input autofocus [class.error] = "(email?.invalid && (email?.dirty || email?.touched) || submitted)" type="text" id="email" formControlName="email" placeholder="Enter email..">
-    <div class="error" *ngIf="email?.invalid && (email?.dirty || email?.touched) || submitted">Email is required</div>
+    <input autofocus [class.error] = "(email?.invalid && (email?.dirty || email?.touched))" type="text" id="email" formControlName="email" placeholder="Enter email..">
+    <div class="error" *ngIf="email?.invalid && (email?.dirty || email?.touched)">Email is required</div>
 
     <label for="password">Password *</label>
-    <input [class.error] = "password?.invalid && (password?.dirty || password?.touched) || submitted" type="password" id="password" formControlName="password" placeholder="Enter password..">
-    <div class="error" *ngIf="password?.invalid && (password?.dirty || password?.touched) || submitted">Password is required</div>
+    <input [class.error] = "password?.invalid && (password?.dirty || password?.touched)" type="password" id="password" formControlName="password" placeholder="Enter password..">
+    <div class="error" *ngIf="password?.invalid && (password?.dirty || password?.touched)">Password is required</div>
 
     <input type="submit" value="Submit">
   </form>

@@ -33,8 +33,9 @@ export class EmployeeRegisterComponent implements OnInit {
   async onSubmit(): Promise<void> {
     this.submitted = true;
     if (!this.employeeRegisterForm.valid) { return; }
-    const response = this.employeeService.register(JSON.stringify(this.employeeRegisterForm.value)).toPromise().catch(errorHandler);
+    const response = await this.employeeService.register(JSON.stringify(this.employeeRegisterForm.value)).toPromise().catch(errorHandler);
     if (response) {
+      this.employeeRegisterForm.reset();
       delayExecution(async () => {
         await this.router.navigate(['/login']);
       });

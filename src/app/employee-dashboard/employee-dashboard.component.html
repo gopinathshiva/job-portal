@@ -1,10 +1,10 @@
 <div class="container">
-  <mat-tab-group>
+  <mat-tab-group [selectedIndex]="selectedTabIndex" (selectedTabChange)="tabChanged($event)">
     <mat-tab label="Job Listing">
-      <app-jobs></app-jobs>
+      <app-jobs *ngIf="selectedTabIndex===0"></app-jobs>
     </mat-tab>
     <mat-tab label="Applied Jobs">
-      <app-applied-jobs></app-applied-jobs>
+      <app-applied-jobs *ngIf="selectedTabIndex===1"></app-applied-jobs>
     </mat-tab>
   </mat-tab-group>
 </div>

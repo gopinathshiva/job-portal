@@ -10,6 +10,7 @@
   <span class="example-spacer"></span>
   <button *ngIf="!isLoggedIn()" class="action-buttons" mat-button (click)="onRegister()">Register</button>
   <button *ngIf="!isLoggedIn()" class="action-buttons" mat-button (click)="onLogin()">Login</button>
+  <button *ngIf="isLoggedIn()" class="action-buttons" mat-button (click)="onClickDashboard()">Dashboard</button>
   <button *ngIf="isLoggedIn()" class="action-buttons" mat-button (click)="onLogout()">Logout</button>
   <button mat-icon-button [matMenuTriggerFor]="moreMenu">
     <mat-icon>more_vert</mat-icon>

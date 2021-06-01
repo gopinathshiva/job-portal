@@ -7,7 +7,7 @@ import { Router, CanActivate } from '@angular/router';
 export class RecruiterAuthGuardService implements CanActivate {
   constructor(public router: Router) {}
   async canActivate(): Promise<boolean> {
-    if (!(localStorage.getItem('user') && localStorage.getItem('isAdmin'))) {
+    if (!(localStorage.getItem('user') && localStorage.getItem('isRecruiter'))) {
       await this.router.navigate(['login']);
       return false;
     }

@@ -29,6 +29,7 @@ export class EmployeeLoginComponent {
     if (!this.loginForm.valid) { return; }
     const response = await this.employeeService.login(JSON.stringify(this.loginForm.value)).toPromise().catch(errorHandler);
     if (response) {
+      this.loginForm.reset();
       localStorage.setItem('user', JSON.stringify(response.user));
       localStorage.setItem('isEmployee', 'true');
       delayExecution(async () => {

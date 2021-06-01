@@ -1,24 +1,24 @@
 <div class="container">
   <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
     <label for="requirement">Requirement *</label>
-    <input autofocus [class.error] = "(requirements?.invalid && (requirements?.dirty || requirements?.touched) || submitted)" type="text" id="requirement" formControlName="requirements" placeholder="Enter requirement..">
-    <div class="error" *ngIf="requirements?.invalid && (requirements?.dirty || requirements?.touched) || submitted">requirement is required</div>
+    <input autofocus [class.error] = "(requirements?.invalid && (requirements?.dirty || requirements?.touched))" type="text" id="requirement" formControlName="requirements" placeholder="Enter requirement..">
+    <div class="error" *ngIf="requirements?.invalid && (requirements?.dirty || requirements?.touched)">requirement is required</div>
 
     <label for="skills">Skills *</label>
-    <input [class.error] = "skills?.invalid && (skills?.dirty || skills?.touched) || submitted" type="text" id="skills" formControlName="skills" placeholder="Enter skills..">
-    <div class="error" *ngIf="skills?.invalid && (skills?.dirty || skills?.touched) || submitted">skills is required</div>
+    <input [class.error] = "skills?.invalid && (skills?.dirty || skills?.touched)" type="text" id="skills" formControlName="skills" placeholder="Enter skills..">
+    <div class="error" *ngIf="skills?.invalid && (skills?.dirty || skills?.touched)">skills is required</div>
 
     <label for="companyName">Company Name *</label>
-    <input [class.error] = "(companyName?.invalid && (companyName?.dirty || companyName?.touched) || submitted)" type="text" id="companyName" formControlName="companyName" placeholder="Enter company name..">
-    <div class="error" *ngIf="companyName?.invalid && (companyName?.dirty || companyName?.touched) || submitted">companyName is required</div>
+    <input [class.error] = "(companyName?.invalid && (companyName?.dirty || companyName?.touched))" type="text" id="companyName" formControlName="companyName" placeholder="Enter company name..">
+    <div class="error" *ngIf="companyName?.invalid && (companyName?.dirty || companyName?.touched)">companyName is required</div>
 
     <label for="contactInfo">Contact Info *</label>
-    <input [class.error] = "contactInfo?.invalid && (contactInfo?.dirty || contactInfo?.touched) || submitted" type="text" id="contactInfo" formControlName="contactInfo" placeholder="Enter contactInfo..">
-    <div class="error" *ngIf="contactInfo?.invalid && (contactInfo?.dirty || contactInfo?.touched) || submitted">contactInfo is required</div>
+    <input [class.error] = "contactInfo?.invalid && (contactInfo?.dirty || contactInfo?.touched)" type="text" id="contactInfo" formControlName="contactInfo" placeholder="Enter contactInfo..">
+    <div class="error" *ngIf="contactInfo?.invalid && (contactInfo?.dirty || contactInfo?.touched)">contactInfo is required</div>
 
     <label for="minSalaryPerHr">Min salary / hr ($) *</label>
-    <input [class.error] = "minSalaryPerHr?.invalid && (minSalaryPerHr?.dirty || minSalaryPerHr?.touched) || submitted" type="number" id="minSalaryPerHr" formControlName="minSalaryPerHr" placeholder="Enter minSalaryPerHr..">
-    <div class="error" *ngIf="minSalaryPerHr?.invalid && (minSalaryPerHr?.dirty || minSalaryPerHr?.touched) || submitted">minSalaryPerHr is required</div>
+    <input [class.error] = "minSalaryPerHr?.invalid && (minSalaryPerHr?.dirty || minSalaryPerHr?.touched)" type="number" id="minSalaryPerHr" formControlName="minSalaryPerHr" placeholder="Enter minSalaryPerHr..">
+    <div class="error" *ngIf="minSalaryPerHr?.invalid && (minSalaryPerHr?.dirty || minSalaryPerHr?.touched)">minSalaryPerHr is required</div>
 
     <input type="submit" value="Submit">
   </form>
